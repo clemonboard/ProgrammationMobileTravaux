@@ -151,7 +151,7 @@
 				}
 			}
             // affiche la valeur hexadecimale de la couleur 
-            function couleur()
+            function Couleur()
 			{
 			  var couleur = document.getElementById("color").value;
 			  document.getElementById("hexa").value=couleur;	 
