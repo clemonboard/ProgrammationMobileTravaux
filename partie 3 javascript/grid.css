@@ -1,0 +1,83 @@
+.container {
+	margin: 0px;
+	box-sizing: border-box;
+
+
+}
+
+body
+{
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+[class*="col-"], footer {
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-collapse:collapse;
+  border-color: white;
+
+}
+
+.entete
+{
+	float: left;
+	text-align: center;
+	text-decoration: underline;
+	width: 100%;
+	height: 30%;
+	border: 3px solid black;
+	box-sizing: border-box;
+	border: 3px solid white;
+}
+
+.container-fluid
+{
+	float: left;
+	width: 100%;
+	height: 70%;
+	box-sizing: border-box;
+}
+
+.container div
+{
+	color: black;
+}
+
+
+
+#competences
+{
+	line-height: 68px;
+}
+
+#grid
+{
+	width: 70%;
+	height: 300px;
+}
+
+#col1, #col2, #col3
+{
+  height: 50px;
+}
+
+#col5
+{
+	height: 30px;
+}
+
+#competences
+{
+	height: 110px;
+}
+
+.container {
+	margin: 0px;
+	box-sizing: border-box;
+
+
+}
+
