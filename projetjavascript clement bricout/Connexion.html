@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link href="http://fr.allfont.net/allfont.css?fonts=broken-planewing" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+		<meta charset ="utf-8">
+		<title>Projet Javascript</title>
+		<link rel= "stylesheet" type="text/css" href = "css/style.css">
+		<script src ="js/fakeDB.js"></script>
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		
+<section class="ombre" style=" height: 47.4em;">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		<img src="img/D&d.png"  width="130px" height="60px">
+		  <a class="nav-item nav-link" href="Connexion.html">Connexion</a>
+		  <a class="nav-item nav-link" href="Creation.html">Création d'un personnage</a>
+		  <a class="nav-item nav-link" href="Consultation.html">Consultation  de personnage</a>
+		  <a class="nav-item nav-link" href="ListePerso.html">Listes des personnages</a>
+		  
+		</div>
+	  </div>
+	</nav>
+				<center><section class="info">
+				<section class ="inscript">
+				<form method="get" onsubmit="return test1(this, event)">
+					<fieldset>
+						<legend>Inscription</legend>
+						<label for="username">Nom d'utilisateur: </label><input id="username" OnBlur ="validationuti()" name="username" type="text" placeholder="ex: Bob123"/>
+						<label for="pwd">Mot de passe: </label><input id="pwd" name="pwd" OnBlur ="validationpwd()" type="password" placeholder="aPwD%4"/>
+						<label for="nom">Nom : </label><input id="nom" name="nom" OnBlur ="validationnom()" type="text" placeholder="ex: Lachance"/>
+						<label for="prenom">Prénom : </label><input id="prenom" name="prenom" OnBlur ="validationpren()" type="text" placeholder="ex: Bob"/>
+					</fieldset>
+			
+					<input id="pageName" name="pageName" type="hidden" value="Formulaire"/>
+					<input id="resetBtn" type="reset" value="Reset"/>			
+					<input id="submitBtn" type="submit"/>								
+					</form>
+					</section>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					<section class ="connex">
+						<form method="get" onsubmit="return test2(this, event)">
+							<fieldset>
+								<legend>Connexion</legend>
+								<label for="username">Nom d'utilisateur: </label><input id="username11" name="username" type="text" placeholder="ex: Bob123"/>
+								<label for="pwd">Mot de passe: </label><input id="pwd11" name="pwd" type="password" placeholder="aPwD%4"/>			
+							</fieldset>
+						
+						<input id="reset" type="reset" value="Reset"/>			
+						<input id="submit" type="submit"/>
+										
+						</form>
+						<p>
+							veuillez clicker deux fois
+						</p>
+					</section>
+				</section>			
+		</section></center>
+		<video autoplay loop id="video-background" muted plays-inline>
+  <source src="img/jinxv2 (1).mp4" type="video/mp4">
+</video>
+	</body>
+</html>

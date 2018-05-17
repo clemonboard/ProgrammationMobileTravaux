@@ -1,0 +1,39 @@
+
+#video-background {
+
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+
+.texte
+{
+	float: center;
+	text-align : center;
+}
+
+
+
+legend
+{
+	color:white;
+	
+}
+.connex
+{
+	border : 1px solid black;
+	height : 32em;
+	text-align : center;
+}
+
+h1
+{
+color:white;	
+	
+}
