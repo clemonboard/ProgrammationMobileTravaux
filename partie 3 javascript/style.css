@@ -1,6 +1,0 @@
-#overlay {
-		background-color: red;
-		z-index: 10;
-		grid-column: content-start / content-end;
-		grid-row: header-start / content-end;
-	}

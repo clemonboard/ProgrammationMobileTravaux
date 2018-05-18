@@ -8,6 +8,8 @@
 	       remplirListe(document.getElementById("lstDiv"), fakeDB.listerDivinites());
 	       remplirListe(document.getElementById("lstRace"), fakeDB.listerRaces());
 	       remplirListe(document.getElementById("lstCla"), fakeDB.listerClasses());
+		   remplirListe(document.getElementById("lstarme"),fakeDB.listerArmesPourTaille());
+		   remplirListe(document.getElementById("lstarmure"),fakeDB.listerArmuresPourTaille());
 	       document.getElementById("lstarme").value= fakeDB.listerArmesPourTaille( document.getElementById("categtaille").value)
            }
            var hash
@@ -27,6 +29,121 @@
 	       }
            }
 
+		   
+		   
+		     function retourneridperso()
+		   {
+			  
+			  
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+			   var fin =db.tblPersonnage.length;
+               for(cpt=0; cpt<=fin;cpt++)
+	           {
+		    if (iddujoueur==db.tblPersonnage[cpt].Joueur)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		   function retourneridiv()
+		   {
+			  
+			   var dom= document.getElementById("lstDiv").value;
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+               for(cpt=0; cpt<=36;cpt++)
+	           {
+		    if (dom==db.tblDivinite[cpt].Nom)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		   function retournericlas()
+		   {
+			  
+			   var dom= document.getElementById("lstCla").value;
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+               for(cpt=0; cpt<=10;cpt++)
+	           {
+		    if (dom==db.tblClasse[cpt].Nom)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		      function retourneridaligne()
+		   {
+			  
+			   var dom= document.getElementById("align").value;
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+               for(cpt=0; cpt<=8;cpt++)
+	           {
+		    if (dom==db.tblAlignement[cpt].Morale)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		   
+		       function retourneridrace()
+		   {
+			  
+			   var dom= document.getElementById("lstRace").value;
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+               for(cpt=0; cpt<=6;cpt++)
+	           {
+		    if (dom==db.tblRace[cpt].Nom)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		    
+		   
+		     function retourneridcatetaille()
+		   {
+			  
+			   var dom= document.getElementById("categtaille").value;
+			   var cpt;
+			   var db = JSON.parse(localStorage.getItem("DB"));
+			   var ide;
+               for(cpt=0; cpt<=2;cpt++)
+	           {
+		    if (dom==db.tblCategorieTaille[cpt].Nom)
+		       {
+				ide=cpt;
+			
+		       }			 		   
+		       }
+				return ide;
+		   }
+		   
+		   
            var nomduj;
            var pwdj;
            var iddujoueur
@@ -85,6 +202,8 @@
             }
             }
 
+			
+			var idcategorietail;
             function determinertaille()
             {
 	        var cpt;
@@ -97,6 +216,7 @@
 	        {
 		    if (categtaille==db.tblCategorieTaille[cpt].Nom)
 		    {
+				idcategorietail=cpt;
 			taillemax= db.tblCategorieTaille[cpt].TailleMaxCm;
 			taillemin= db.tblCategorieTaille[cpt].TailleMinCm;	
 		    }	
@@ -142,18 +262,20 @@
 	        document.getElementById("lstarme").value=list;
             }
 
-            function determinerage()
+			
+           /* function determinerage()
             {	
 	        var cpt;
 	        var agemax;
 	        var agemin;
-	        var race= document.getElementById("race").value;
+	        var race= document.getElementById("lstRace").value;
 	        var age= document.getElementById("taille").value;
 	        var db = JSON.parse(localStorage.getItem("DB"));
 	        for(cpt=0; cpt<=12;cpt++)
 	        {
 		    if (race==db.tblRace[cpt].Nom)
 		    {
+			
 			agemax= db.tblRace[cpt].AgeAvance;
 			agemin= db.tblRace[cpt].AgeAdulte;	
 		    }	
@@ -163,7 +285,7 @@
 		    alert("l'age doit etre en accord avec la race");
 	        }
             }
-	 
+	 */
 	 
             function AjouterInfo()
             {
@@ -196,9 +318,9 @@
 			{
 		    appel();
 			creationperso();
-			determinerage();
+		
 			var niveau = document.getElementById("niveau").value;
-			var genre= document.getElementById("genre").value;
+			var genre= document.getElementsByTagName("gender").value;
 			var age= document.getElementById("age").value;
 			var taille= document.getElementById("taille").value;
 			var poids= document.getElementById("poids").value;
@@ -206,10 +328,11 @@
 			var yeux= document.getElementById("coloryeux").value;
 			var cheveux= document.getElementById("colorcheveux");
 				// j'ai essayer de creer un personnage mais la fonction me retourne taille invalide alors que la taille est correct, j'ai fais plusieur test en inserant moi meme des données		
-			//fakeDB.creerPerso(nomduj,1,2,3,niveau,2,genre,age,2,80,poids,lamgue,yeux,cheveux,iddujoueur)
-			    var changer = document.getElementById("submitBtn").onclick = function(){
-			    location.href = "Consultation.html?idjoueur="+iddujoueur+"&&idperso="+idperso;
-				};
+	            fakeDB.creerPerso(nomduj,retourneridiv(),retourneridaligne(),retournericlas(),niveau,retourneridrace(),genre,age,retourneridcatetaille(),taille,poids,lamgue,yeux,cheveux,iddujoueur)
+				fakeDB.ajouterOuModifierCaracteristiques(2,sommehabilite(force),sommehabilite(dext),sommehabilite(consta),sommehabilite(intel),sommehabilite(sag),sommehabilite(chari),verifierCompetances())
+			    //r changer = document.getElementById("submitBtn").onclick = function(){
+			    //cation.href = "Consultation.html?idjoueur="+iddujoueur+"&&idperso="+idperso;
+				//
 				event.preventDefault();
 				return false;
 			}
@@ -339,56 +462,162 @@
 				{			
 					alert ("incorect");
 				}					
-			event.preventDefault();
-			return false;				
-			}
+			    event.preventDefault();
+			    return false;				
+		   }
 
-			//produit un nombre aléatoire de 1 à 6 pour les caractéristiques
-			function getRandomInt()
-			{
-				var rndforce = document.getElementById("force");
-				var rnddex = document.getElementById("dext");
-				var rndconst = document.getElementById("const");
-				var rndintel = document.getElementById("intel");
-				var rndsag = document.getElementById("sag");
-				var rndchar = document.getElementById("char");
-				var rndSomme = document.getElementById("rndSomme");
-				rndforce.value = (Math.round(Math.random() *5)+1);
-				rnddex.value = (Math.round(Math.random() *5)+1);
-				rndconst.value = (Math.round(Math.random() *5)+1);
-				rndintel.value = (Math.round(Math.random() *5)+1);
-				rndsag.value = (Math.round(Math.random() *5)+1);
-				rndchar.value = (Math.round(Math.random() *5)+1);				
-				document.getElementById("btnrandom").disabled = true;
-				event.preventDefault();
-			return false;
-			}
+		
 			
-			// fonction que j'ai creer pour rejouter un select arme mais cela ne fonctionne pas
-			function rajouterarme()
-			{
-				document.getElementById("rajouterarme").innertHTML="<div class='col-6' style='background-color:lavender; border-style: solid; border-width: 0.5px;'>Armure</div> <div class='col-6' style='background-color:lavender; border-style: solid; border-width: 0.5px;'><label for='ref'></label><input id='ref' name='ref' type='number' </div>";
-				
-			}
+		
+		    var force;
+		    var dext;
+		    var consta;
+		    var intel;
+		    var sag;
+		    var chari;
+		
+	
+	        function genererStats()
+           {
+           document.getElementById("force").value= genNbreAlea();
+	       force=document.getElementById("force").value 
+	       document.getElementById("dext").value = genNbreAlea();
+	       dext=document.getElementById("dext").value
+           document.getElementById("const").value = genNbreAlea();
+           consta=  document.getElementById("const").value;
+           document.getElementById("intel").value = genNbreAlea();
+	       intel =  document.getElementById("intel").value;
+           document.getElementById("sag").value = genNbreAlea();
+	       sag= document.getElementById("sag").value;
+           document.getElementById("char").value = genNbreAlea();
+	       chari=  document.getElementById("char").value
+           document.getElementById("genCarac").disabled = "disabled";
+	       remplirbonus();
+           }
+
+           function genNbreAlea()
+           {
+            var random1 = Math.floor(Math.random() * Math.floor(6)+1);
+            var random2 = Math.floor(Math.random() * Math.floor(6)+1);
+            var random3 = Math.floor(Math.random() * Math.floor(6)+1);
+            return random1.toString() + "," + random2.toString() + "," +  random3.toString();
+           }
+
+           function sommehabilite(id)
+           {
+	       var somme;
+	       var nombre1;
+	       var nombre2;
+	       var nombre3;
+	       nombre1=id.substr(0,1);
+	       nombre2=id.substr(2,1);
+	       nombre3=id.substr(4,1);
+	       somme= parseInt(nombre1)+parseInt(nombre2)+parseInt(nombre3)
+	       return somme;
+           }
+
+
+           function idPersonnage()
+           {
+           var id;
+           var db = JSON.parse(localStorage.getItem("DB"));
+           if(db.tbltblPersonnage == undefined)
+           {
+           id = 0;
+           }
+           else
+           {
+           var tabPersonnages = db.tbltblPersonnage;
+           id = db.tabPersonnage.length;
+           }
+           return id;
+           }
+
+           function verifierCompetances()
+           {
+           var competance = document.getElementsByName("compet");
+           var tabCompet = [];
+           var caracCompet = "";
+           for(var item of competance)
+           {
+           if(item.checked == true)
+           {
+           tabCompet.push(item.value);
+           }
+           }
+
+           if(tabCompet.length > 3 || tabCompet.length == 0)
+           {
+           return false;
+           }
+           else
+           {
+           caracCompet += tabCompet[0];
+           for(var i = 1; i < tabCompet.length; i++)
+           {
+           caracCompet += "|" + tabCompet[i];
+           }       
+            return caracCompet;  
+           }
+           }
 			
 			// fonction que tu nous a donner qui permet de recupere id du joueur et id perso, cela ne fonctionne pas car j,ai eter capable de creer un perso
 			function parseURLParams() {
-    var url = window.location.href;
-    var queryStart = url.indexOf("?") + 1,
-        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
-        query = url.slice(queryStart, queryEnd - 1),
-        pairs = query.replace(/\+/g, " ").split("&"),
-        parms = {}, i, n, v, nv;
+            var url = window.location.href;
+            var queryStart = url.indexOf("?") + 1,
+            queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+            query = url.slice(queryStart, queryEnd - 1),
+            pairs = query.replace(/\+/g, " ").split("&"),
+            parms = {}, i, n, v, nv;
+            if (query === url || query === "") return;
+            for (i = 0; i < pairs.length; i++) {
+            nv = pairs[i].split("=", 2);
+            n = decodeURIComponent(nv[0]);
+            v = decodeURIComponent(nv[1]);
+            if (!parms.hasOwnProperty(n)) parms[n] = [];
+            parms[n].push(nv.length === 2 ? v : null);
+            }
+            return parms;
+            }
 
-    if (query === url || query === "") return;
 
-    for (i = 0; i < pairs.length; i++) {
-        nv = pairs[i].split("=", 2);
-        n = decodeURIComponent(nv[0]);
-        v = decodeURIComponent(nv[1]);
+            var bonusforce;
+            var bonusDexterite;
+            var bonuscons;
+            var  bonusintel;
+            var bonussagesse;
+            var bonuscharisme;
+            function remplirbonus()
+            {
+	         bonusforce= sommehabilite(force) + fakeDB.bonusHabilete(2).Force;
+	         bonusDexterite= sommehabilite(dext) + fakeDB.bonusHabilete(2).Dexterite;
+	         bonuscons= sommehabilite(consta) + fakeDB.bonusHabilete(2).Constitution;
+	         bonusintel= sommehabilite(intel) + fakeDB.bonusHabilete(2).Intelligence;
+             bonussagesse= sommehabilite(sag) + fakeDB.bonusHabilete(2).Sagesse;
+	         bonuscharisme= sommehabilite(chari)+ fakeDB.bonusHabilete(2).Charisme;	
+	         document.getElementById("bforce").value= bonusforce;
+	         document.getElementById("bdext").value= bonusDexterite;
+	         document.getElementById("bconst").value= bonuscons;
+	         document.getElementById("bintel").value= bonusintel;
+	         document.getElementById("bsag").value= bonussagesse;
+	         document.getElementById("bchar").value= bonussagesse;
+	         remplirvigeuretautre() ;
+            }
 
-        if (!parms.hasOwnProperty(n)) parms[n] = [];
-        parms[n].push(nv.length === 2 ? v : null);
-    }
-    return parms;
-}
+             function remplirvigeuretautre()
+             {
+	         var db = JSON.parse(localStorage.getItem("DB"));
+	         var vigeur=db.tblClasse[retournericlas()].BonusVigueur;
+	         var reflexe= db.tblClasse[retournericlas()].BonusReflexe;
+	         var volonte= db.tblClasse[retournericlas()].BonusVolonte;
+	         document.getElementById("vig").value= vigeur;
+	         document.getElementById("ref").value= reflexe;
+	         document.getElementById("vol").value= volonte;
+             }
+
+             function listeperso()
+             {
+	          var changer = document.getElementById("chBtn").onclick = function(){
+	          cation.href = "ListePerso.html?idjoueur="+iddujoueur+"&&idperso="+idperso;}
+             }
+
